@@ -7,6 +7,7 @@
  *  			Dan Boehmke <>
  *  version: 2015.9.9
  */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,15 +28,17 @@ public class Driver {
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
 		} // end try catch
+		
 		int sdk[][] = new int[w * h][w * h];
-
 		int y;
+		
 		// Use regex to pull numbers out of the string read in by
 		// BufferedReader br.readLine() and populate 2D array sdk[][]
 		Pattern p = Pattern.compile("\\d+");
 		for (int x = 0; x < (w * h); x++) {
 			y = 0;
 			Matcher m = p.matcher(br.readLine());
+			
 			while (m.find() && y < (w * h)) {
 				sdk[x][y] = Integer.parseInt(m.group());
 				System.out.print(sdk[x][y] + " ");
@@ -45,5 +48,8 @@ public class Driver {
 		} // end for
 
 	}// end main
+	
+	// Methods for checking rows/columns/blocks will go here?
+	// Or, they will just be a part of main
 
 }// end Driver
