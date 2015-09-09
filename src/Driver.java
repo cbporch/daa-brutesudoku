@@ -1,3 +1,4 @@
+
 /*
  *  Project: Brute Force Sudoku Solver
  *  Class: Design and Analysis of Algorithms
@@ -8,23 +9,40 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Driver {
 	public static BufferedReader br;
-	
+
 	public static void main(String[] args) throws IOException {
 		br = new BufferedReader(new FileReader("src\\testInput.txt"));
-		
+
 		int w = 0, h = 0;
-		
-		try{
+
+		try {
 			w = Integer.parseInt(br.readLine());
 			h = Integer.parseInt(br.readLine());
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Error reading from file");
 		}
-		System.out.println(w + " " + h);
-		int sdk[][] = new int[w*h][w*h];
+		int sdk[][] = new int[w * h][w * h];
+
+		int y;
+		// Use regex to pull numbers out of the string read in by
+		// BufferedReader br.readLine() and populate 2D array sdk[][]
+		Pattern p = Pattern.compile("\\d+");
+		for (int x = 0; x < (w * h); x++) {
+			y = 0;
+			Matcher m = p.matcher(br.readLine());
+			while (m.find() && y < (w * h)) {
+				sdk[x][y] = Integer.parseInt(m.group());
+				System.out.print(sdk[x][y] + " ");
+				y++;
+			}
+			System.out.println("");
+		}
+		
 		
 	}
 
