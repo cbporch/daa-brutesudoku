@@ -13,16 +13,19 @@ public class Driver {
 	public static BufferedReader br;
 	
 	public static void main(String[] args) throws IOException {
-		br = new BufferedReader(new FileReader("\\testInput.txt"));
+		br = new BufferedReader(new FileReader("src\\testInput.txt"));
 		
 		int w = 0, h = 0;
+		
 		try{
-			w = br.read();
-			h = br.read();
+			w = Integer.parseInt(br.readLine());
+			h = Integer.parseInt(br.readLine());
 		}catch(Exception e){
 			System.out.println("Error reading from file");
 		}
+		System.out.println(w + " " + h);
 		int sdk[][] = new int[w*h][w*h];
+		
 	}
 
 }
