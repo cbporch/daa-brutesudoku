@@ -3,7 +3,8 @@
  *  Project: Brute Force Sudoku Solver
  *  Class: Design and Analysis of Algorithms
  *  Professor Lobo
- *  Authors: Christopher Porch <porchc0@students.rowan.edu>
+ *  Authors: 	Christopher Porch <porchc0@students.rowan.edu>
+ *  			Dan Boehmke <>
  *  version: 2015.9.9
  */
 import java.io.BufferedReader;
@@ -25,7 +26,7 @@ public class Driver {
 			h = Integer.parseInt(br.readLine());
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
-		}// end try catch
+		} // end try catch
 		int sdk[][] = new int[w * h][w * h];
 
 		int y;
@@ -39,10 +40,10 @@ public class Driver {
 				sdk[x][y] = Integer.parseInt(m.group());
 				System.out.print(sdk[x][y] + " ");
 				y++;
-			}// end while
+			} // end while
 			System.out.println("");
-		}// end for
-		
+		} // end for
+
 	}// end main
 
 }// end Driver
