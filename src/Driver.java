@@ -25,7 +25,7 @@ public class Driver {
 			h = Integer.parseInt(br.readLine());
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
-		}
+		}// end try catch
 		int sdk[][] = new int[w * h][w * h];
 
 		int y;
@@ -39,11 +39,10 @@ public class Driver {
 				sdk[x][y] = Integer.parseInt(m.group());
 				System.out.print(sdk[x][y] + " ");
 				y++;
-			}
+			}// end while
 			System.out.println("");
-		}
+		}// end for
 		
-		
-	}
+	}// end main
 
-}
+}// end Driver
