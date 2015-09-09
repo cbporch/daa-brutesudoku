@@ -1,9 +1,10 @@
+package sudokuPackage;
 
 /*
  *  Project: Brute Force Sudoku Solver
  *  Class: Design and Analysis of Algorithms
  *  Professor Lobo
- *  Authors: 	Christopher Porch <porchc0@students.rowan.edu>
+ *  Authors: 	 Christopher Porch <porchc0@students.rowan.edu>
  *  			Dan Boehmke <>
  *  version: 2015.9.9
  */
