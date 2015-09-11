@@ -7,7 +7,7 @@ package sudokuPackage;
  *  Authors: 	Christopher Porch <porchc0@students.rowan.edu>
  *  		Dan Boehmke <boehmked2@students.rowan.edu>
  *  		Brian Grillo <>
- *  version: 2015.9.9
+ *  version: 2015.9.11
  */
 
 import java.io.BufferedReader;
