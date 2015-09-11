@@ -25,8 +25,10 @@ public class Driver {
 		int w = 0, h = 0;
 
 		try {
-			w = Integer.parseInt(br.readLine());
-			h = Integer.parseInt(br.readLine());
+			String line = skipComments(br.readLine());
+			w = Integer.parseInt(line);
+			line = skipComments(br.readLine());
+			h = Integer.parseInt(line);
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
 		} // end try catch
@@ -39,7 +41,8 @@ public class Driver {
 		Pattern p = Pattern.compile("\\d+");
 		for (int x = 0; x < (w * h); x++) {
 			y = 0;
-			Matcher m = p.matcher(br.readLine());
+			String line = skipComments(br.readLine());
+			Matcher m = p.matcher(line);
 
 			while (m.find() && y < (w * h)) {
 				sdk[x][y] = Integer.parseInt(m.group());
@@ -93,7 +96,7 @@ public class Driver {
 		} // end for
 
 	}// end main
-
+	
 	public static boolean checkRowColumn(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums.length; j++) {
@@ -113,4 +116,16 @@ public class Driver {
 		// duplicates
 		// block by block
 	}// end checkBlocks
+	
+	public static String skipComments(String line) throws IOException{
+		try{
+			while(line.trim().substring(0, 1).equals("c")){
+				// line is a comment, skip
+				line = br.readLine();
+			}// end while
+		}catch(Exception e){
+			System.out.println("Error reading from file");
+		}
+		return line;
+	}
 }// end Driver
