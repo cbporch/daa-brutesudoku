@@ -18,8 +18,10 @@ import java.util.regex.Pattern;
 
 public class Driver {
 	public static BufferedReader br;
-
+	public static Timer tim;
 	public static void main(String[] args) throws IOException {
+		tim = new Timer();
+		tim.start();
 		br = new BufferedReader(new FileReader("src\\testInput.txt"));
 
 		int w = 0, h = 0;
@@ -93,6 +95,10 @@ public class Driver {
 				// fail, exit loop, try new numbers?
 				i += (w * h);
 			} // end if else
+			
+			tim.stop();
+			System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
+			
 		} // end for
 
 	}// end main
