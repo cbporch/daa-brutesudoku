@@ -62,6 +62,7 @@ public class Driver {
 		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
 		System.out.println("Should be true: " + checkRowColumn(trueArray));
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
+		System.out.println("List of six numbers: " + createNumbers(size));
 
 		/*
 		 * Somewhere in here should go code to check for zeros, and start to
@@ -104,7 +105,12 @@ public class Driver {
 		} // end for
 
 	}// end main
-	
+	public static int[] createNumbers(int size){
+		int tempNums[] = new int[size];
+		for(int i = 0; i < size; i++)
+			tempNums[i] = 1;
+		return tempNums;
+	}
 	public static boolean checkRowColumn(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums.length; j++) {
