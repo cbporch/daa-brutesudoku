@@ -91,32 +91,34 @@ public class Driver {
 		// but it should test one row and one column at a time, so it only has
 		// to
 		// run (size) times instead of 2(size) times -Chris
-		int tempRow[] = new int[size];
-		int tempCol[] = new int[size];
-		for (int i = 0; i < (size); i++) {
-			for (int j = 0; j < (size); j++) {
-				tempRow[j] = tempSDK[i][j]; // pulls numbers from each row
-				tempCol[j] = tempSDK[j][i]; // pulls number from each column
-			} // end for
-
-			if (checkRowColumn(tempRow)) {
-				// catch potential row
-			} else {
-				// fail, exit loop, try new numbers?
-				i += (size);
-			} // end if else
-
-			if (checkRowColumn(tempCol)) {
-				// catch potential column
-			} else {
-				// fail, exit loop, try new numbers?
-				i += (size);
-			} // end if else
-			
+		boolean pass = true;
+		do{
+			int tempRow[] = new int[size];
+			int tempCol[] = new int[size];
+			for (int i = 0; i < (size); i++) {
+				for (int j = 0; j < (size); j++) {
+					tempRow[j] = tempSDK[i][j]; // pulls numbers from each row
+					tempCol[j] = tempSDK[j][i]; // pulls number from each column
+				} // end for
+	
+				if (checkRowColumn(tempRow)) {
+					// catch potential row
+				} else {
+					// fail, exit loop, try new numbers?
+					i += (size);
+				} // end if else
+	
+				if (checkRowColumn(tempCol)) {
+					// catch potential column
+				} else {
+					// fail, exit loop, try new numbers?
+					i += (size);
+				} // end if else
+			}// end for
 			tim.stop();
 			System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 			
-		} // end for
+		}while(pass); // end do while
 
 	}// end main
 	public static int[] createNumbers(int size){
