@@ -76,6 +76,8 @@ public class Driver {
 				tempSDK[x][y] = sdk[x][y];
 			}
 		}
+		
+		int zeros [] = new int[zeroCounter];
 		/*
 		 * Somewhere in here should go code to check for zeros, and start to
 		 * fill them in with potential numbers. I think maybe we should
