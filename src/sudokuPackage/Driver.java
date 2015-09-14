@@ -25,7 +25,6 @@ public class Driver {
 		br = new BufferedReader(new FileReader("src\\testInput.txt"));
 
 		int w = 0, h = 0, size = 0;
-		
 
 		try {
 			String line = skipComments(br.readLine());
@@ -108,11 +107,13 @@ public class Driver {
 					pass = false;
 				} // end if else
 			}// end for
-			tim.stop();
-			System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
+			
+			//check blocks
 			
 		}while(pass); // end do while
-
+		
+		tim.stop();
+		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
 	
 	public static int[] createNumbers(int size){
@@ -125,7 +126,9 @@ public class Driver {
 	public static int[] incrementNumbers(int[] nums){
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
-		tempNums[nums.length-1]++;
+		// still needs to roll over
+		tempNums[nums.length-1]++; // last int incremented
+		
 		return tempNums;
 	}
 	
@@ -137,7 +140,7 @@ public class Driver {
 	}
 	
 	public static boolean checkRowColumn(int[] nums) {
-		for (int i = 0; i < nums.length; i++) {
+		for (int i = 0; i < nums.length; i++) { 
 			for (int j = 0; j < nums.length; j++) {
 				if (i != j && nums[i] == nums[j]) {
 					return false;
