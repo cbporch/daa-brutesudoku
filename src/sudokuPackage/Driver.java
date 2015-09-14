@@ -67,35 +67,21 @@ public class Driver {
 		System.out.println("Should be true: " + checkRowColumn(trueArray));
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
 		
-//		int[] tempArray = createNumbers(size);
+		int[] numArray = createNumbers(zeroCounter);
 //		System.out.println("List of six numbers: ");
-//		listNumbers(tempArray);
-//		incrementNumbers(tempArray);
-//		listNumbers(tempArray);
+//		listNumbers(numArray);
+//		incrementNumbers(numArray);
+//		listNumbers(numArray);
 		
 		// create and populate a temporary array for switching the zeros
 		// to the integer later
-		int tempSDK[][] = new int[w*h][w*h];
-		for (int x = 0; x < (w * h); x++){
-			for (int y = 0; y < (w * h); y++){
+		int tempSDK[][] = new int[size][size];
+		for (int x = 0; x < (size); x++){
+			for (int y = 0; y < (size); y++){
 				tempSDK[x][y] = sdk[x][y];
 			}
 		}
-		
-		int zeros [] = new int[zeroCounter];
-		/*
-		 * Somewhere in here should go code to check for zeros, and start to
-		 * fill them in with potential numbers. I think maybe we should
-		 * duplicate our 2D array each time and test on that one, so as not to
-		 * mess up the original too badly while searching? That or somehow keep
-		 * track of the indexes the zeros are in. -Chris
-		 */
 
-		// have not tested this block yet, might need to be inside a bigger
-		// while loop
-		// but it should test one row and one column at a time, so it only has
-		// to
-		// run (size) times instead of 2(size) times -Chris
 		boolean pass = true;
 		do{
 			int tempRow[] = new int[size];
@@ -111,6 +97,7 @@ public class Driver {
 				} else {
 					// fail, exit loop, try new numbers?
 					i += (size);
+					pass = false;
 				} // end if else
 	
 				if (checkRowColumn(tempCol)) {
@@ -118,6 +105,7 @@ public class Driver {
 				} else {
 					// fail, exit loop, try new numbers?
 					i += (size);
+					pass = false;
 				} // end if else
 			}// end for
 			tim.stop();
