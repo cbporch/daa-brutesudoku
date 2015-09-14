@@ -38,19 +38,22 @@ public class Driver {
 		} // end try catch
 
 		int sdk[][] = new int[size][size];
-		int y;
+		int zeroCounter = 0;
 
 		// Use regex to pull numbers out of the string read in by
 		// BufferedReader br.readLine() and populate 2D array sdk[][]
 		Pattern p = Pattern.compile("\\d+");
 		for (int x = 0; x < (size); x++) {
-			y = 0;
+			int y = 0;
 			String line = skipComments(br.readLine());
 			Matcher m = p.matcher(line);
 
 			while (m.find() && y < (size)) {
 				sdk[x][y] = Integer.parseInt(m.group());
 				System.out.print(sdk[x][y] + " ");
+				if(sdk[x][y] == 0){
+					zeroCounter++;
+				}
 				y++;
 			} // end while
 			System.out.println("");
@@ -64,6 +67,12 @@ public class Driver {
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
 		System.out.println("List of six numbers: " + createNumbers(size));
 
+		int tempSDK[][] = new int[w*h][w*h];
+		for (int x = 0; x < (w * h); x++){
+			for (int y = 0; y < (w * h); y++){
+				tempSDK[x][y] = sdk[x][y];
+			}
+		}
 		/*
 		 * Somewhere in here should go code to check for zeros, and start to
 		 * fill them in with potential numbers. I think maybe we should
