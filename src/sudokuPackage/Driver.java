@@ -24,29 +24,31 @@ public class Driver {
 		tim.start();
 		br = new BufferedReader(new FileReader("src\\testInput.txt"));
 
-		int w = 0, h = 0;
+		int w = 0, h = 0, size = 0;
+		
 
 		try {
 			String line = skipComments(br.readLine());
 			w = Integer.parseInt(line);
 			line = skipComments(br.readLine());
 			h = Integer.parseInt(line);
+			size = w*h;
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
 		} // end try catch
 
-		int sdk[][] = new int[w * h][w * h];
+		int sdk[][] = new int[size][size];
 		int y;
 
 		// Use regex to pull numbers out of the string read in by
 		// BufferedReader br.readLine() and populate 2D array sdk[][]
 		Pattern p = Pattern.compile("\\d+");
-		for (int x = 0; x < (w * h); x++) {
+		for (int x = 0; x < (size); x++) {
 			y = 0;
 			String line = skipComments(br.readLine());
 			Matcher m = p.matcher(line);
 
-			while (m.find() && y < (w * h)) {
+			while (m.find() && y < (size)) {
 				sdk[x][y] = Integer.parseInt(m.group());
 				System.out.print(sdk[x][y] + " ");
 				y++;
@@ -73,11 +75,11 @@ public class Driver {
 		// while loop
 		// but it should test one row and one column at a time, so it only has
 		// to
-		// run (w * h) times instead of 2(w * h) times -Chris
-		int tempRow[] = new int[w * h];
-		int tempCol[] = new int[w * h];
-		for (int i = 0; i < (w * h); i++) {
-			for (int j = 0; j < (w * h); j++) {
+		// run (size) times instead of 2(size) times -Chris
+		int tempRow[] = new int[size];
+		int tempCol[] = new int[size];
+		for (int i = 0; i < (size); i++) {
+			for (int j = 0; j < (size); j++) {
 				tempRow[j] = sdk[i][j]; // pulls numbers from each row
 				tempCol[j] = sdk[j][i]; // pulls number from each column
 			} // end for
@@ -86,14 +88,14 @@ public class Driver {
 				// catch potential row
 			} else {
 				// fail, exit loop, try new numbers?
-				i += (w * h);
+				i += (size);
 			} // end if else
 
 			if (checkRowColumn(tempCol)) {
 				// catch potential column
 			} else {
 				// fail, exit loop, try new numbers?
-				i += (w * h);
+				i += (size);
 			} // end if else
 			
 			tim.stop();
