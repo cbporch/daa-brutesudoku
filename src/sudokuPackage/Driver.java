@@ -42,6 +42,7 @@ public class Driver {
 
 		// Use regex to pull numbers out of the string read in by
 		// BufferedReader br.readLine() and populate 2D array sdk[][]
+		// counts number of zeros in the base file
 		Pattern p = Pattern.compile("\\d+");
 		for (int x = 0; x < (size); x++) {
 			int y = 0;
@@ -66,7 +67,9 @@ public class Driver {
 		System.out.println("Should be true: " + checkRowColumn(trueArray));
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
 		System.out.println("List of six numbers: " + createNumbers(size));
-
+		
+		// create and populate a temporary array for switching the zeros
+		// to the integer later
 		int tempSDK[][] = new int[w*h][w*h];
 		for (int x = 0; x < (w * h); x++){
 			for (int y = 0; y < (w * h); y++){
