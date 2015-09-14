@@ -90,8 +90,8 @@ public class Driver {
 		int tempCol[] = new int[size];
 		for (int i = 0; i < (size); i++) {
 			for (int j = 0; j < (size); j++) {
-				tempRow[j] = sdk[i][j]; // pulls numbers from each row
-				tempCol[j] = sdk[j][i]; // pulls number from each column
+				tempRow[j] = tempSDK[i][j]; // pulls numbers from each row
+				tempCol[j] = tempSDK[j][i]; // pulls number from each column
 			} // end for
 
 			if (checkRowColumn(tempRow)) {
