@@ -66,7 +66,11 @@ public class Driver {
 		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
 		System.out.println("Should be true: " + checkRowColumn(trueArray));
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
-		System.out.println("List of six numbers: " + createNumbers(size));
+		tempArray = createNumbers(size);
+		System.out.println("List of six numbers: ");
+		listNumbers(tempArray);
+		incrementNumbers(tempArray);
+		listNumbers(tempArray);
 		
 		// create and populate a temporary array for switching the zeros
 		// to the integer later
@@ -127,6 +131,21 @@ public class Driver {
 			tempNums[i] = 1;
 		return tempNums;
 	}
+	
+	public static int[] incrementNumbers(int[] nums){
+		int tempNums[] = new int[nums.length];
+		tempNums = nums;
+		tempNums[nums.length-1]++;
+		return tempNums;
+	}
+	
+	public static void listNumbers(int[] nums){
+		for (int i = 0; i < nums.length; i++) {
+			System.out.print(nums[i]);
+		}
+		System.out.println();
+	}
+	
 	public static boolean checkRowColumn(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums.length; j++) {
