@@ -3,15 +3,15 @@ c this line is a comment, ignore
 c this line is a comment, ignore
 3
 c this line is a comment, ignore
-1 2 3 4 5 6
+1 0 3 4 0 0
 c this line is a comment, ignore
-4 5 6 1 2 3
+4 0 6 0 0 3
 c this line is a comment, ignore
-0 0 0 1 1 1
+2 0 1 0 6 0
 c this line is a comment, ignore
-1 1 1 0 0 0
+5 0 4 2 0 0
 c this line is a comment, ignore
-5 0 6 0 1 0
+3 0 2 0 4 0
 c this line is a comment, ignore
-6 0 2 0 4 0
+6 0 5 0 0 2
 c this line is a comment, ignore
