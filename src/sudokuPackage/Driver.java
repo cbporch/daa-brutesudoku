@@ -99,36 +99,7 @@ public class Driver {
 		System.out.println("After the numbers are entered: ");
 		listPuzzle(tempSDK);
 
-		boolean pass = true;
-		do{
-			int tempRow[] = new int[size];
-			int tempCol[] = new int[size];
-			for (int i = 0; i < (size); i++) {
-				for (int j = 0; j < (size); j++) {
-					tempRow[j] = tempSDK[i][j]; // pulls numbers from each row
-					tempCol[j] = tempSDK[j][i]; // pulls numbers from each column
-				} // end for
-	
-				if (checkRowColumn(tempRow)) {
-					// catch potential row
-				} else {
-					// fail, exit loop, try new numbers?
-					i += (size);
-					pass = false;
-				} // end if else
-	
-				if (checkRowColumn(tempCol)) {
-					// catch potential column
-				} else {
-					// fail, exit loop, try new numbers?
-					i += (size);
-					pass = false;
-				} // end if else
-			}// end for
-			
-			//check blocks
-			
-		}while(pass); // end do while
+		System.out.println(checkPuzzle(tempSDK));
 		
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
@@ -192,6 +163,45 @@ public class Driver {
 		// duplicates
 		// block by block
 	}// end checkBlocks
+	
+	public static boolean checkPuzzle(int[][] puzz)
+	{
+		boolean pass = true;
+		do{
+			int tempRow[] = new int[size];
+			int tempCol[] = new int[size];
+			for (int i = 0; i < (size); i++) {
+				for (int j = 0; j < (size); j++) {
+					tempRow[j] = puzz[i][j]; // pulls numbers from each row
+					tempCol[j] = puzz[j][i]; // pulls numbers from each column
+				} // end for
+	
+				if (checkRowColumn(tempRow)) {
+					// catch potential row
+					System.out.println("Pass Row");
+				} else {
+					// fail, exit loop, try new numbers?
+					i += (size);
+					pass = false;
+					System.out.println("Failed Row");
+				} // end if else
+	
+				if (checkRowColumn(tempCol)) {
+					// catch potential column
+					System.out.println("Pass Column");
+				} else {
+					// fail, exit loop, try new numbers?
+					i += (size);
+					pass = false;
+					System.out.println("Failed Column");
+				} // end if else
+			}// end for
+			
+			//check blocks
+			
+		}while(pass); // end do while
+		return pass;
+	}
 	
 	public static String skipComments(String line) throws IOException{
 		try{
