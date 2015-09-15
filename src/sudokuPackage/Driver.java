@@ -8,8 +8,6 @@ package sudokuPackage;
  *  			Dan Boehmke <boehmked2@students.rowan.edu>
  *  			Brian Grillo <>
  *  version: 2015.9.15
- *  
- *  Rebase test!
  */
 
 import java.io.BufferedReader;
