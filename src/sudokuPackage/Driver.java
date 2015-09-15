@@ -99,12 +99,14 @@ public class Driver {
 				numArray = incrementNumbers(numArray);
 				tempSDK = clonePuzzle(sdk);
 				tempSDK = fillInNumbers(numArray,tempSDK);
+				passed = checkPuzzle(tempSDK);
+			}while(!passed && numArray[0] <= size);
+			if(passed){
 				listPuzzle(tempSDK);
 				System.out.println("------------");
 				listNumbers(numArray);
 				System.out.println("------------");
-				passed = checkPuzzle(tempSDK);
-			}while(!passed);
+			}
 		System.out.println("Finished");
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
