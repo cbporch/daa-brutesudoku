@@ -131,9 +131,8 @@ public class Driver {
 	public static int[] incrementNumbers(int[] nums){
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
-		
 		tempNums[nums.length-1]++; // last int incremented
-		
+			
 		for(int i = nums.length-1; i > 0; i--){
 			if(tempNums[i] == (size+1))	{
 				tempNums[i] = 1;
