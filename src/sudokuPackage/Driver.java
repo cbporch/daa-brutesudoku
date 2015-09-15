@@ -106,7 +106,7 @@ public class Driver {
 			for (int i = 0; i < (size); i++) {
 				for (int j = 0; j < (size); j++) {
 					tempRow[j] = tempSDK[i][j]; // pulls numbers from each row
-					tempCol[j] = tempSDK[j][i]; // pulls number from each column
+					tempCol[j] = tempSDK[j][i]; // pulls numbers from each column
 				} // end for
 	
 				if (checkRowColumn(tempRow)) {
@@ -164,18 +164,12 @@ public class Driver {
 	}
 	
 	public static void listPuzzle(int[][] puzz){
-		System.out.print("+");
 		for (int x = 0; x < (size); x++){
 			for (int y = 0; y < (size); y++){
-				System.out.print(puzz[x][y]);
-				if(y < size-1){
-					System.out.print("-");
-				}
-				else{
-					System.out.print("+");
-				}
+				System.out.print(puzz[x][y] + " ");
+				
 			}
-			System.out.print("\n+");
+			System.out.print("\n");
 		}
 	}
 	
