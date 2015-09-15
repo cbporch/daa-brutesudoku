@@ -4,10 +4,7 @@ c this line is a comment, ignore
 2
 c this line is a comment, ignore
 1 0 3 4
-c this line is a comment, ignore
-3 0 1 0 
-c this line is a comment, ignore
-4 0 2 0 
-c this line is a comment, ignore
-2 0 4 0 
+0 0 0 0
+0 0 0 0
+0 0 0 0
 c this line is a comment, ignore
