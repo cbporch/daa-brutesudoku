@@ -63,49 +63,65 @@ public class Driver {
 
 		// Dan Test Zone
 		// checkRow Tester
-		int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
-		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
-		System.out.println("Should be true: " + checkRowColumn(trueArray));
-		System.out.println("Should be false: " + checkRowColumn(falseArray));
+//		int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
+//		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
+//		System.out.println("Should be true: " + checkRowColumn(trueArray));
+//		System.out.println("Should be false: " + checkRowColumn(falseArray));
 		
 		// Numbers Tester
-		int[] numArray = createNumbers(zeroCounter);
-		System.out.println("List of 12 numbers: ");
-		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
+//		int[] numArray = createNumbers(zeroCounter);
+//		System.out.println("List of 12 numbers: ");
+//		listNumbers(numArray);
+//		incrementNumbers(numArray);
+//		listNumbers(numArray);
 	
 		
 		// create and populate a temporary array for switching the zeros
 		// to the integer later
+//		int tempSDK[][] = new int[size][size];
+//		for (int x = 0; x < (size); x++){
+//			for (int y = 0; y < (size); y++){
+//				tempSDK[x][y] = sdk[x][y];
+//			}
+//		}
+//		System.out.println("Before the numbers are entered: ");
+//		listPuzzle(tempSDK);
+//		
+//		tempSDK = fillInNumbers(numArray,tempSDK);
+//		
+//		System.out.println("After the numbers are entered: ");
+//		listPuzzle(tempSDK);
+		
+		boolean passed = false;
 		int tempSDK[][] = new int[size][size];
-		for (int x = 0; x < (size); x++){
-			for (int y = 0; y < (size); y++){
-				tempSDK[x][y] = sdk[x][y];
-			}
-		}
-		System.out.println("Before the numbers are entered: ");
-		listPuzzle(tempSDK);
-		
-		int place = 0;
-		for (int x = 0; x < (size); x++){
-			for (int y = 0; y < (size); y++){
-				if(tempSDK[x][y] == 0){
-					tempSDK[x][y] = numArray[place];
-				}
-			}
-		}
-		
-		System.out.println("After the numbers are entered: ");
-		listPuzzle(tempSDK);
-
-		System.out.println(checkPuzzle(tempSDK));
-		
+		int[] numArray = createNumbers(zeroCounter);
+		do{
+				numArray = incrementNumbers(numArray);
+				tempSDK = clonePuzzle(sdk);
+				tempSDK = fillInNumbers(numArray,tempSDK);
+				listPuzzle(tempSDK);
+				System.out.println("------------");
+				listNumbers(numArray);
+				System.out.println("------------");
+				passed = checkPuzzle(tempSDK);
+			}while(!passed);
+		System.out.println("Finished");
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
 	
+	public static int[][] clonePuzzle(int[][] puzz){
+		int tempSDK[][] = new int[size][size];
+		for (int x = 0; x < (size); x++){
+			for (int y = 0; y < (size); y++){
+				tempSDK[x][y] = puzz[x][y];
+			}
+		}
+		return tempSDK;
+	}
+	
 	public static int[] createNumbers(int size){
+		System.out.println(size);
 		int tempNums[] = new int[size];
 		for(int i = 0; i < size; i++)
 			tempNums[i] = 1;
@@ -132,6 +148,19 @@ public class Driver {
 			System.out.print(nums[i]);
 		}
 		System.out.println();
+	}
+	
+	public static int[][] fillInNumbers(int[] nums, int[][] tempNums){
+		int place = 0;
+		for (int x = 0; x < (size); x++){
+			for (int y = 0; y < (size); y++){
+				if(tempNums[x][y] == 0){
+					tempNums[x][y] = nums[place];
+					place++;
+				}
+			}
+		}
+		return tempNums;
 	}
 	
 	public static void listPuzzle(int[][] puzz){
@@ -166,7 +195,7 @@ public class Driver {
 	
 	public static boolean checkPuzzle(int[][] puzz)
 	{
-		boolean pass = true;
+		boolean pass = false;
 		do{
 			int tempRow[] = new int[size];
 			int tempCol[] = new int[size];
@@ -178,27 +207,26 @@ public class Driver {
 	
 				if (checkRowColumn(tempRow)) {
 					// catch potential row
-					System.out.println("Pass Row");
+					//System.out.println("Pass Row");
 				} else {
 					// fail, exit loop, try new numbers?
 					i += (size);
 					pass = false;
-					System.out.println("Failed Row");
+					//System.out.println("Failed Row");
 				} // end if else
 	
 				if (checkRowColumn(tempCol)) {
 					// catch potential column
-					System.out.println("Pass Column");
+					//System.out.println("Pass Column");
 				} else {
 					// fail, exit loop, try new numbers?
 					i += (size);
 					pass = false;
-					System.out.println("Failed Column");
+					//System.out.println("Failed Column");
 				} // end if else
 			}// end for
-			
 			//check blocks
-			
+			//System.out.println("Testing");
 		}while(pass); // end do while
 		return pass;
 	}
