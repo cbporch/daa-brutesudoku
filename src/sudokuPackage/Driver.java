@@ -72,11 +72,9 @@ public class Driver {
 		int[] numArray = createNumbers(zeroCounter);
 		System.out.println("List of 12 numbers: ");
 		listNumbers(numArray);
-		for(int i = 0; i < 250; i++)
-		{
-			incrementNumbers(numArray);
-			listNumbers(numArray);
-		}
+		incrementNumbers(numArray);
+		listNumbers(numArray);
+	
 		
 		// create and populate a temporary array for switching the zeros
 		// to the integer later
@@ -86,6 +84,20 @@ public class Driver {
 				tempSDK[x][y] = sdk[x][y];
 			}
 		}
+		System.out.println("Before the numbers are entered: ");
+		listPuzzle(tempSDK);
+		
+		int place = 0;
+		for (int x = 0; x < (size); x++){
+			for (int y = 0; y < (size); y++){
+				if(tempSDK[x][y] == 0){
+					tempSDK[x][y] = numArray[place];
+				}
+			}
+		}
+		
+		System.out.println("After the numbers are entered: ");
+		listPuzzle(tempSDK);
 
 		boolean pass = true;
 		do{
@@ -135,15 +147,12 @@ public class Driver {
 		
 		tempNums[nums.length-1]++; // last int incremented
 		
-		for(int i = nums.length-1; i > 0; i--)
-		{
-			if(tempNums[i] == (size+1))
-			{
+		for(int i = nums.length-1; i > 0; i--){
+			if(tempNums[i] == (size+1))	{
 				tempNums[i] = 1;
 				tempNums[i-1]++;
 			}
 		}
-		
 		return tempNums;
 	}
 	
@@ -152,6 +161,22 @@ public class Driver {
 			System.out.print(nums[i]);
 		}
 		System.out.println();
+	}
+	
+	public static void listPuzzle(int[][] puzz){
+		System.out.print("+");
+		for (int x = 0; x < (size); x++){
+			for (int y = 0; y < (size); y++){
+				System.out.print(puzz[x][y]);
+				if(y < size-1){
+					System.out.print("-");
+				}
+				else{
+					System.out.print("+");
+				}
+			}
+			System.out.print("\n+");
+		}
 	}
 	
 	public static boolean checkRowColumn(int[] nums) {
