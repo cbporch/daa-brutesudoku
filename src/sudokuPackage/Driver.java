@@ -108,7 +108,7 @@ public class Driver {
 		System.out.println("Finished");
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
-	}// end main
+	}// end main 
 	
 	public static int[][] clonePuzzle(int[][] puzz){
 		int tempSDK[][] = new int[size][size];
