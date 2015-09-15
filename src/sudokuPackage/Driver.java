@@ -61,27 +61,22 @@ public class Driver {
 
 		} // end for
 
+		// Dan Test Zone
 		// checkRow Tester
 		int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
 		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
 		System.out.println("Should be true: " + checkRowColumn(trueArray));
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
 		
+		// Numbers Tester
 		int[] numArray = createNumbers(zeroCounter);
 		System.out.println("List of 12 numbers: ");
 		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
-		incrementNumbers(numArray);
-		listNumbers(numArray);
+		for(int i = 0; i < 250; i++)
+		{
+			incrementNumbers(numArray);
+			listNumbers(numArray);
+		}
 		
 		// create and populate a temporary array for switching the zeros
 		// to the integer later
@@ -137,15 +132,16 @@ public class Driver {
 	public static int[] incrementNumbers(int[] nums){
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
-		// still needs to roll over
-		if(tempNums[nums.length-1] < size)
+		
+		tempNums[nums.length-1]++; // last int incremented
+		
+		for(int i = nums.length-1; i > 0; i--)
 		{
-			tempNums[nums.length-1]++; // last int incremented
-		}
-		else
-		{
-			tempNums[nums.length-1] = 1;
-			tempNums[nums.length-2]++;
+			if(tempNums[i] == (size+1))
+			{
+				tempNums[i] = 1;
+				tempNums[i-1]++;
+			}
 		}
 		
 		return tempNums;
