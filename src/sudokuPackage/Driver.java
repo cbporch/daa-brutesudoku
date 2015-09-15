@@ -7,7 +7,7 @@ package sudokuPackage;
  *  Authors:	Christopher Porch <porchc0@students.rowan.edu>
  *  			Dan Boehmke <boehmked2@students.rowan.edu>
  *  			Brian Grillo <>
- *  version: 2015.9.11
+ *  version: 2015.9.15
  */
 
 import java.io.BufferedReader;
@@ -19,12 +19,13 @@ import java.util.regex.Pattern;
 public class Driver {
 	public static BufferedReader br;
 	public static Timer tim;
+	public static int w = 0, h = 0, size = 0;
 	public static void main(String[] args) throws IOException {
 		tim = new Timer();
 		tim.start();
 		br = new BufferedReader(new FileReader("src\\testInput.txt"));
 
-		int w = 0, h = 0, size = 0;
+		//int w = 0, h = 0, size = 0;
 
 		try {
 			String line = skipComments(br.readLine());
@@ -67,10 +68,20 @@ public class Driver {
 		System.out.println("Should be false: " + checkRowColumn(falseArray));
 		
 		int[] numArray = createNumbers(zeroCounter);
-//		System.out.println("List of six numbers: ");
-//		listNumbers(numArray);
-//		incrementNumbers(numArray);
-//		listNumbers(numArray);
+		System.out.println("List of 12 numbers: ");
+		listNumbers(numArray);
+		incrementNumbers(numArray);
+		listNumbers(numArray);
+		incrementNumbers(numArray);
+		listNumbers(numArray);
+		incrementNumbers(numArray);
+		listNumbers(numArray);
+		incrementNumbers(numArray);
+		listNumbers(numArray);
+		incrementNumbers(numArray);
+		listNumbers(numArray);
+		incrementNumbers(numArray);
+		listNumbers(numArray);
 		
 		// create and populate a temporary array for switching the zeros
 		// to the integer later
@@ -127,7 +138,15 @@ public class Driver {
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
 		// still needs to roll over
-		tempNums[nums.length-1]++; // last int incremented
+		if(tempNums[nums.length-1] < size)
+		{
+			tempNums[nums.length-1]++; // last int incremented
+		}
+		else
+		{
+			tempNums[nums.length-1] = 1;
+			tempNums[nums.length-2]++;
+		}
 		
 		return tempNums;
 	}
