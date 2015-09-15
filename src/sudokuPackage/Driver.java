@@ -107,7 +107,7 @@ public class Driver {
 				listNumbers(numArray);
 				System.out.println("------------");
 			}
-		System.out.println("Finished");
+		//System.out.println("Finished");
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main 
