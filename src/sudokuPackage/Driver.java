@@ -54,7 +54,7 @@ public class Driver {
 				System.out.print(sdk[x][y] + " ");
 				if(sdk[x][y] == 0){
 					zeroCounter++;
-				}
+				}// end if
 				y++;
 			} // end while
 			System.out.println("");
