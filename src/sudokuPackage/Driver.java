@@ -136,9 +136,9 @@ public class Driver {
 	public static int[] incrementNumbers(int[] nums) {
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
-		try {
+		try{
 			tempNums[nums.length - 1]++; // last int incremented
-		} catch (ArrayIndexOutOfBoundsException e) {
+		}catch(ArrayIndexOutOfBoundsException e){
 			System.out.println("Error, no zeros found in puzzle!\n");
 		}
 
@@ -175,6 +175,7 @@ public class Driver {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
 				System.out.print(puzz[x][y] + " ");
+
 			}
 			System.out.print("\n");
 		}
