@@ -78,6 +78,9 @@ public class Driver {
 			System.out.println("------------");
 		}
 		// System.out.println("Finished");
+		if (!passed){
+			System.out.println("No Solution");
+		}
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
