@@ -62,36 +62,6 @@ public class Driver {
 
 		} // end for
 
-		// Dan Test Zone
-		// checkRow Tester
-		// int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
-		// int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
-		// System.out.println("Should be true: " + checkRowColumn(trueArray));
-		// System.out.println("Should be false: " + checkRowColumn(falseArray));
-
-		// Numbers Tester
-		// int[] numArray = createNumbers(zeroCounter);
-		// System.out.println("List of 12 numbers: ");
-		// listNumbers(numArray);
-		// incrementNumbers(numArray);
-		// listNumbers(numArray);
-
-		// create and populate a temporary array for switching the zeros
-		// to the integer later
-		// int tempSDK[][] = new int[size][size];
-		// for (int x = 0; x < (size); x++){
-		// for (int y = 0; y < (size); y++){
-		// tempSDK[x][y] = sdk[x][y];
-		// }
-		// }
-		// System.out.println("Before the numbers are entered: ");
-		// listPuzzle(tempSDK);
-		//
-		// tempSDK = fillInNumbers(numArray,tempSDK);
-		//
-		// System.out.println("After the numbers are entered: ");
-		// listPuzzle(tempSDK);
-
 		boolean passed = false;
 		int tempSDK[][] = new int[size][size];
 		int[] numArray = createNumbers(zeroCounter);
