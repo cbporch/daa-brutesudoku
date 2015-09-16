@@ -108,6 +108,9 @@ public class Driver {
 			System.out.println("------------");
 		}
 		// System.out.println("Finished");
+		if (!passed){
+			System.out.println("No Solution");
+		}
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
@@ -133,9 +136,9 @@ public class Driver {
 	public static int[] incrementNumbers(int[] nums) {
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
-		try{
+		try {
 			tempNums[nums.length - 1]++; // last int incremented
-		}catch(ArrayIndexOutOfBoundsException e){
+		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Error, no zeros found in puzzle!\n");
 		}
 
@@ -172,7 +175,6 @@ public class Driver {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
 				System.out.print(puzz[x][y] + " ");
-
 			}
 			System.out.print("\n");
 		}
@@ -224,11 +226,14 @@ public class Driver {
 			int tempCol[] = new int[size];
 			for (int i = 0; i < (size); i++) {
 				for (int j = 0; j < (size); j++) {
-					tempRow[j] = puzz[i][j]; // pulls numbers from each row
+					//tempRow[j] = puzz[i][j]; // pulls numbers from each row
 					tempCol[j] = puzz[j][i]; // pulls numbers from each column
 				} // end for
 
-				if ((checkRowColumn(tempRow))&&(checkRowColumn(tempCol))) {
+				tempRow = puzz[i];
+				//listNumbers(tempRow);
+				
+				if ((checkRowColumn(tempRow)) && (checkRowColumn(tempCol))) {
 					pass = true;
 				} else {
 					// fail, exit loop, try new numbers?
