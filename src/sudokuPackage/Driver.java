@@ -96,7 +96,6 @@ public class Driver {
 		int tempSDK[][] = new int[size][size];
 		int[] numArray = createNumbers(zeroCounter);
 		do {
-
 			tempSDK = clonePuzzle(sdk);
 			tempSDK = fillInNumbers(numArray, tempSDK);
 			passed = checkPuzzle(tempSDK);
@@ -124,7 +123,7 @@ public class Driver {
 	}
 
 	public static int[] createNumbers(int size) {
-		System.out.println(size);
+		System.out.println("\n" + size + " zeroes\n");
 		int tempNums[] = new int[size];
 		for (int i = 0; i < size; i++)
 			tempNums[i] = 1;
@@ -134,7 +133,11 @@ public class Driver {
 	public static int[] incrementNumbers(int[] nums) {
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
-		tempNums[nums.length - 1]++; // last int incremented
+		try{
+			tempNums[nums.length - 1]++; // last int incremented
+		}catch(ArrayIndexOutOfBoundsException e){
+			System.out.println("Error, no zeros found in puzzle!\n");
+		}
 
 		for (int i = nums.length - 1; i > 0; i--) {
 			if (tempNums[i] == (size + 1)) {
