@@ -71,16 +71,17 @@ public class Driver {
 			passed = checkPuzzle(tempSDK);
 			numArray = incrementNumbers(numArray);
 		} while (!passed && numArray[0] <= size);
+		
 		if (passed) {
 			listPuzzle(tempSDK);
 			System.out.println("------------");
 			listNumbers(numArray);
 			System.out.println("------------");
-		}
-		// System.out.println("Finished");
+		}// end if
+		
 		if (!passed){
 			System.out.println("No Solution");
-		}
+		}// end if
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
@@ -90,18 +91,19 @@ public class Driver {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
 				tempSDK[x][y] = puzz[x][y];
-			}
-		}
+			}// end for
+		}// end for
 		return tempSDK;
-	}
+	}// end clonePuzzle
 
 	public static int[] createNumbers(int size) {
 		System.out.println("\n" + size + " zeroes\n");
 		int tempNums[] = new int[size];
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size; i++) {
 			tempNums[i] = 1;
+		}// end for
 		return tempNums;
-	}
+	}// end createNumbers
 
 	public static int[] incrementNumbers(int[] nums) {
 		int tempNums[] = new int[nums.length];
@@ -110,23 +112,23 @@ public class Driver {
 			tempNums[nums.length - 1]++; // last int incremented
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Error, no zeros found in puzzle!\n");
-		}
+		}// end try-catch
 
 		for (int i = nums.length - 1; i > 0; i--) {
 			if (tempNums[i] == (size + 1)) {
 				tempNums[i] = 1;
 				tempNums[i - 1]++;
-			}
-		}
+			}// end if
+		}// end for
 		return tempNums;
-	}
+	}//end incrementNumbers
 
 	public static void listNumbers(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(nums[i]);
-		}
+		}// end for
 		System.out.println();
-	}
+	}// end listNumbers
 
 	public static int[][] fillInNumbers(int[] nums, int[][] tempNums) {
 		int place = 0;
@@ -135,27 +137,27 @@ public class Driver {
 				if (tempNums[x][y] == 0) {
 					tempNums[x][y] = nums[place];
 					place++;
-				}
-			}
-		}
+				}// end if
+			}// end for
+		}// end for
 		return tempNums;
-	}
+	}// end fillInNumbers
 
 	public static void listPuzzle(int[][] puzz) {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
 				System.out.print(puzz[x][y] + " ");
-			}
+			}// end for
 			System.out.print("\n");
-		}
-	}
+		}// end for
+	}// end listPuzzle
 
 	public static boolean checkRowColumn(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums.length; j++) {
 				if (i != j && nums[i] == nums[j]) {
 					return false;
-				}
+				}// end if
 			} // end j for
 		} // end i for
 		return true;
@@ -171,8 +173,8 @@ public class Driver {
 				for (int k = y_offset; k < h + y_offset; k++) {
 					temparray[point] = arr[j][k];
 					point++;
-				}
-			}
+				}// end for
+			}// end for
 			pass = checkRowColumn(temparray);
 			if (x_offset < size) {
 				x_offset += w;
@@ -182,10 +184,10 @@ public class Driver {
 					if (y_offset == size) {
 						// checked all blocks
 						return pass;
-					}
-				}
-			}
-		}
+					}// end if
+				}// end if
+			}// end if
+		}// end for
 		return false;
 	}// end checkBlocks
 
@@ -196,31 +198,27 @@ public class Driver {
 			int tempCol[] = new int[size];
 			for (int i = 0; i < (size); i++) {
 				for (int j = 0; j < (size); j++) {
-					//tempRow[j] = puzz[i][j]; // pulls numbers from each row
 					tempCol[j] = puzz[j][i]; // pulls numbers from each column
 				} // end for
 
 				tempRow = puzz[i];
-				//listNumbers(tempRow);
 				
 				if ((checkRowColumn(tempRow)) && (checkRowColumn(tempCol))) {
 					pass = true;
 				} else {
-					// fail, exit loop, try new numbers?
+					// fail, exit loop
 					i += (size);
 					pass = false;
-					// System.out.println("Failed Row");
 				} // end if else
 			} // end for
 
 			if (pass) {// if all rows/columns pass
 				pass = checkBlocks(puzz);
 				return pass;
-			}
-			// System.out.println("Testing");
+			}// end if
 		} while (pass); // end do while
 		return pass;
-	}
+	}// end checkPuzzle
 
 	public static String skipComments(String line) throws IOException {
 		try {
@@ -230,7 +228,7 @@ public class Driver {
 			} // end while
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
-		}
+		}// end try-catch
 		return line;
-	}
+	}// end skipComments
 }// end Driver
