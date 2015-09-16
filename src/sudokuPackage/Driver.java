@@ -6,7 +6,7 @@ package sudokuPackage;
  *  Professor Lobo
  *  Authors:	Christopher Porch <porchc0@students.rowan.edu>
  *  			Dan Boehmke <boehmked2@students.rowan.edu>
- *  			Brian Grillo <>
+ *  			Brian Grillo <grillo88@students.rowan.edu>
  *  version: 2015.9.15
  */
 
