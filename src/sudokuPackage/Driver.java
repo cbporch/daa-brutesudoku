@@ -7,7 +7,7 @@ package sudokuPackage;
  *  Authors:	Christopher Porch <porchc0@students.rowan.edu>
  *  			Dan Boehmke <boehmked2@students.rowan.edu>
  *  			Brian Grillo <grillo88@students.rowan.edu>
- *  version: 2015.9.15
+ *  version: 2015.9.21
  */
 
 import java.io.BufferedReader;
@@ -86,6 +86,9 @@ public class Driver {
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
 
+	/*
+	 * Returns a duplicate of a given 2D array puzzle matrix
+	 */
 	public static int[][] clonePuzzle(int[][] puzz) {
 		int tempSDK[][] = new int[size][size];
 		for (int x = 0; x < (size); x++) {
@@ -96,6 +99,9 @@ public class Driver {
 		return tempSDK;
 	}// end clonePuzzle
 
+	/*
+	 * Creates and returns an array of ones of a given length to begin testing for a solution 
+	 */
 	public static int[] createNumbers(int size) {
 		System.out.println("\n" + size + " zeroes\n");
 		int tempNums[] = new int[size];
@@ -105,6 +111,10 @@ public class Driver {
 		return tempNums;
 	}// end createNumbers
 
+	/*
+	 * Increments the given array by one, while handling rollovers, returns the
+	 * incremented array
+	 */
 	public static int[] incrementNumbers(int[] nums) {
 		int tempNums[] = new int[nums.length];
 		tempNums = nums;
@@ -123,6 +133,10 @@ public class Driver {
 		return tempNums;
 	}//end incrementNumbers
 
+	/*
+	 * Prints a given array as a string, used to output the
+	 * specific numbers used in the solution
+	 */
 	public static void listNumbers(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(nums[i]);
@@ -130,6 +144,10 @@ public class Driver {
 		System.out.println();
 	}// end listNumbers
 
+	/*
+	 * Given a 2D array, replaces all instances of zeros with the given solution
+	 * numbers, and then returns that array
+	 */
 	public static int[][] fillInNumbers(int[] nums, int[][] tempNums) {
 		int place = 0;
 		for (int x = 0; x < (size); x++) {
@@ -143,6 +161,9 @@ public class Driver {
 		return tempNums;
 	}// end fillInNumbers
 
+	/*
+	 * Prints out a given puzzle, with similar formatting to the input file.
+	 */
 	public static void listPuzzle(int[][] puzz) {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
@@ -152,6 +173,10 @@ public class Driver {
 		}// end for
 	}// end listPuzzle
 
+	/*
+	 * Checks a given array row/column for correctness, 
+	 * returns true if the row/column is valid, false if not
+	 */
 	public static boolean checkRowColumn(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums.length; j++) {
@@ -163,6 +188,11 @@ public class Driver {
 		return true;
 	}// end CheckRowColumn
 
+	/*
+	 * Breaks off individual blocks from a given puzzle, treats them as arrays,
+	 * then sends them to checkRowColumn to verify. Returns a boolean, true if
+	 * all the blocks are valid, false if not
+	 */
 	public static boolean checkBlocks(int[][] arr) {
 		int x_offset = 0, y_offset = 0, point = 0;
 		boolean pass = false;
@@ -191,6 +221,11 @@ public class Driver {
 		return false;
 	}// end checkBlocks
 
+	/*
+	 * Checks the given puzzle for correctness, using the checkRowColumn and 
+	 * checkBlocks methods. returns true if the puzzle is a valid
+	 * solution, false if not.
+	 */
 	public static boolean checkPuzzle(int[][] puzz) {
 		boolean pass = false;
 		do {
@@ -220,6 +255,11 @@ public class Driver {
 		return pass;
 	}// end checkPuzzle
 
+	/*
+	 * Method to skip comments in the given input file. If the given line
+	 * begins with a 'c' the line is skipped until a line that does not start
+	 * with a 'c' is reached, then returns that line.
+	 */
 	public static String skipComments(String line) throws IOException {
 		try {
 			while (line.trim().substring(0, 1).equals("c")) {
