@@ -206,6 +206,9 @@ public class Driver {
 				}// end for
 			}// end for
 			pass = checkRowColumn(temparray);
+			if(!pass){
+				return pass;
+			}
 			if (x_offset < size) {
 				x_offset += w;
 				if (x_offset == size) {
@@ -238,12 +241,17 @@ public class Driver {
 
 				tempRow = puzz[i];
 				
-				if ((checkRowColumn(tempRow)) && (checkRowColumn(tempCol))) {
-					pass = true;
+				if (checkRowColumn(tempRow)) {
+					if(checkRowColumn(tempCol)) {
+						pass = true;
+					} else {
+						//i += (size);
+						return false;
+					}
 				} else {
 					// fail, exit loop
-					i += (size);
-					pass = false;
+					//i += (size);
+					return false;
 				} // end if else
 			} // end for
 
