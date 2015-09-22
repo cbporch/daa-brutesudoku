@@ -62,6 +62,35 @@ public class Driver {
 
 		} // end for
 
+		// Dan Test Zone
+		// checkRow Tester
+//		int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
+//		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
+//		System.out.println("Should be true: " + checkRowColumn(trueArray));
+//		System.out.println("Should be false: " + checkRowColumn(falseArray));
+//
+//		// Numbers Tester
+//		int[] numArray = createNumbers(zeroCounter);
+//		System.out.println("List of 12 numbers: ");
+//		listNumbers(numArray);
+//		incrementNumbers(numArray);
+//		listNumbers(numArray);
+//		// create and populate a temporary array for switching the zeros
+//		// to the integer later
+//		int tempSDK[][] = new int[size][size];
+//		for (int x = 0; x < (size); x++) {
+//			for (int y = 0; y < (size); y++) {
+//				tempSDK[x][y] = sdk[x][y];
+//			}
+//		}
+//		System.out.println("Before the numbers are entered: ");
+//		listPuzzle(tempSDK);
+//
+//		tempSDK = fillInNumbers(numArray, tempSDK);
+//
+//		System.out.println("After the numbers are entered: ");
+//		listPuzzle(tempSDK);
+
 		boolean passed = false;
 		int tempSDK[][] = new int[size][size];
 		int[] numArray = createNumbers(zeroCounter);
@@ -71,17 +100,17 @@ public class Driver {
 			passed = checkPuzzle(tempSDK);
 			numArray = incrementNumbers(numArray);
 		} while (!passed && numArray[0] <= size);
-		
+
 		if (passed) {
 			listPuzzle(tempSDK);
 			System.out.println("------------");
 			listNumbers(numArray);
 			System.out.println("------------");
-		}// end if
-		
-		if (!passed){
+		} // end if
+
+		if (!passed) {
 			System.out.println("No Solution");
-		}// end if
+		} // end if
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
@@ -94,20 +123,21 @@ public class Driver {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
 				tempSDK[x][y] = puzz[x][y];
-			}// end for
-		}// end for
+			} // end for
+		} // end for
 		return tempSDK;
 	}// end clonePuzzle
 
 	/*
-	 * Creates and returns an array of ones of a given length to begin testing for a solution 
+	 * Creates and returns an array of ones of a given length to begin testing
+	 * for a solution
 	 */
 	public static int[] createNumbers(int size) {
 		System.out.println("\n" + size + " zeroes\n");
 		int tempNums[] = new int[size];
 		for (int i = 0; i < size; i++) {
 			tempNums[i] = 1;
-		}// end for
+		} // end for
 		return tempNums;
 	}// end createNumbers
 
@@ -122,25 +152,25 @@ public class Driver {
 			tempNums[nums.length - 1]++; // last int incremented
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Error, no zeros found in puzzle!\n");
-		}// end try-catch
+		} // end try-catch
 
 		for (int i = nums.length - 1; i > 0; i--) {
 			if (tempNums[i] == (size + 1)) {
 				tempNums[i] = 1;
 				tempNums[i - 1]++;
-			}// end if
-		}// end for
+			} // end if
+		} // end for
 		return tempNums;
-	}//end incrementNumbers
+	}// end incrementNumbers
 
 	/*
-	 * Prints a given array as a string, used to output the
-	 * specific numbers used in the solution
+	 * Prints a given array as a string, used to output the specific numbers
+	 * used in the solution
 	 */
 	public static void listNumbers(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(nums[i]);
-		}// end for
+		} // end for
 		System.out.println();
 	}// end listNumbers
 
@@ -155,9 +185,9 @@ public class Driver {
 				if (tempNums[x][y] == 0) {
 					tempNums[x][y] = nums[place];
 					place++;
-				}// end if
-			}// end for
-		}// end for
+				} // end if
+			} // end for
+		} // end for
 		return tempNums;
 	}// end fillInNumbers
 
@@ -168,21 +198,21 @@ public class Driver {
 		for (int x = 0; x < (size); x++) {
 			for (int y = 0; y < (size); y++) {
 				System.out.print(puzz[x][y] + " ");
-			}// end for
+			} // end for
 			System.out.print("\n");
-		}// end for
+		} // end for
 	}// end listPuzzle
 
 	/*
-	 * Checks a given array row/column for correctness, 
-	 * returns true if the row/column is valid, false if not
+	 * Checks a given array row/column for correctness, returns true if the
+	 * row/column is valid, false if not
 	 */
 	public static boolean checkRowColumn(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
-			for (int j = (i+1); j < nums.length; j++) {
+			for (int j = (i + 1); j < nums.length; j++) {
 				if (nums[i] == nums[j]) {
 					return false;
-				}// end if
+				} // end if
 			} // end j for
 		} // end i for
 		return true;
@@ -203,10 +233,10 @@ public class Driver {
 				for (int k = y_offset; k < h + y_offset; k++) {
 					temparray[point] = arr[j][k];
 					point++;
-				}// end for
-			}// end for
+				} // end for
+			} // end for
 			pass = checkRowColumn(temparray);
-			if(!pass){
+			if (!pass) {
 				return pass;
 			}
 			if (x_offset < size) {
@@ -217,17 +247,17 @@ public class Driver {
 					if (y_offset == size) {
 						// checked all blocks
 						return pass;
-					}// end if
-				}// end if
-			}// end if
-		}// end for
+					} // end if
+				} // end if
+			} // end if
+		} // end for
 		return false;
 	}// end checkBlocks
 
 	/*
-	 * Checks the given puzzle for correctness, using the checkRowColumn and 
-	 * checkBlocks methods. returns true if the puzzle is a valid
-	 * solution, false if not.
+	 * Checks the given puzzle for correctness, using the checkRowColumn and
+	 * checkBlocks methods. returns true if the puzzle is a valid solution,
+	 * false if not.
 	 */
 	public static boolean checkPuzzle(int[][] puzz) {
 		boolean pass = false;
@@ -240,17 +270,17 @@ public class Driver {
 				} // end for
 
 				tempRow = puzz[i];
-				
+
 				if (checkRowColumn(tempRow)) {
-					if(checkRowColumn(tempCol)) {
+					if (checkRowColumn(tempCol)) {
 						pass = true;
 					} else {
-						//i += (size);
+						// i += (size);
 						return false;
 					}
 				} else {
 					// fail, exit loop
-					//i += (size);
+					// i += (size);
 					return false;
 				} // end if else
 			} // end for
@@ -258,15 +288,15 @@ public class Driver {
 			if (pass) {// if all rows/columns pass
 				pass = checkBlocks(puzz);
 				return pass;
-			}// end if
+			} // end if
 		} while (pass); // end do while
 		return pass;
 	}// end checkPuzzle
 
 	/*
-	 * Method to skip comments in the given input file. If the given line
-	 * begins with a 'c' the line is skipped until a line that does not start
-	 * with a 'c' is reached, then returns that line.
+	 * Method to skip comments in the given input file. If the given line begins
+	 * with a 'c' the line is skipped until a line that does not start with a
+	 * 'c' is reached, then returns that line.
 	 */
 	public static String skipComments(String line) throws IOException {
 		try {
@@ -276,7 +306,7 @@ public class Driver {
 			} // end while
 		} catch (Exception e) {
 			System.out.println("Error reading from file");
-		}// end try-catch
+		} // end try-catch
 		return line;
 	}// end skipComments
 }// end Driver
