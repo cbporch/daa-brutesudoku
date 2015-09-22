@@ -45,73 +45,82 @@ public class Driver {
 		// BufferedReader br.readLine() and populate 2D array sdk[][]
 		// counts number of zeros in the base file
 		Pattern p = Pattern.compile("\\d+");
+		int test = 0;
+		boolean fail = false;
 		for (int x = 0; x < (size); x++) {
 			int y = 0;
 			String line = skipComments(br.readLine());
 			Matcher m = p.matcher(line);
-
-			while (m.find() && y < (size)) {
-				sdk[x][y] = Integer.parseInt(m.group());
-				System.out.print(sdk[x][y] + " ");
-				if (sdk[x][y] == 0) {
-					zeroCounter++;
-				} // end if
-				y++;
+			
+			while ((m.find()) && (y < (size))) {
+				test = Integer.parseInt(m.group());
+				if(test > size){
+					System.out.println("\nError: Incorrect puzzle value");
+					fail = true;
+					y += size;
+					x += size;
+				} else {
+					sdk[x][y] = test;
+					System.out.print(sdk[x][y] + " ");
+					if (sdk[x][y] == 0) {
+						zeroCounter++;
+					} // end if
+					y++;
+				}
 			} // end while
 			System.out.println("");
 
 		} // end for
 
-		// Dan Test Zone
-		// checkRow Tester
-//		int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
-//		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
-//		System.out.println("Should be true: " + checkRowColumn(trueArray));
-//		System.out.println("Should be false: " + checkRowColumn(falseArray));
-//
-//		// Numbers Tester
-//		int[] numArray = createNumbers(zeroCounter);
-//		System.out.println("List of 12 numbers: ");
-//		listNumbers(numArray);
-//		incrementNumbers(numArray);
-//		listNumbers(numArray);
-//		// create and populate a temporary array for switching the zeros
-//		// to the integer later
-//		int tempSDK[][] = new int[size][size];
-//		for (int x = 0; x < (size); x++) {
-//			for (int y = 0; y < (size); y++) {
-//				tempSDK[x][y] = sdk[x][y];
-//			}
-//		}
-//		System.out.println("Before the numbers are entered: ");
-//		listPuzzle(tempSDK);
-//
-//		tempSDK = fillInNumbers(numArray, tempSDK);
-//
-//		System.out.println("After the numbers are entered: ");
-//		listPuzzle(tempSDK);
-
-		boolean passed = false;
-		int tempSDK[][] = new int[size][size];
-		int[] numArray = createNumbers(zeroCounter);
-		do {
-			numArray = incrementNumbers(numArray);
-			tempSDK = clonePuzzle(sdk);
-			tempSDK = fillInNumbers(numArray, tempSDK);
-			passed = checkPuzzle(tempSDK);
-			
-		} while (!passed && numArray[0] <= size);
-
-		if (passed) {
-			listPuzzle(tempSDK);
-			System.out.println("------------");
-			listNumbers(numArray);
-			System.out.println("------------");
-		} // end if
-
-		if (!passed) {
-			System.out.println("No Solution");
-		} // end if
+			// Dan Test Zone
+			// checkRow Tester
+	//		int[] trueArray = new int[] { 1, 4, 3, 2, 5, 6 };
+	//		int[] falseArray = new int[] { 1, 2, 3, 1, 2, 3 };
+	//		System.out.println("Should be true: " + checkRowColumn(trueArray));
+	//		System.out.println("Should be false: " + checkRowColumn(falseArray));
+	//
+	//		// Numbers Tester
+	//		int[] numArray = createNumbers(zeroCounter);
+	//		System.out.println("List of 12 numbers: ");
+	//		listNumbers(numArray);
+	//		incrementNumbers(numArray);
+	//		listNumbers(numArray);
+	//		// create and populate a temporary array for switching the zeros
+	//		// to the integer later
+	//		int tempSDK[][] = new int[size][size];
+	//		for (int x = 0; x < (size); x++) {
+	//			for (int y = 0; y < (size); y++) {
+	//				tempSDK[x][y] = sdk[x][y];
+	//			}
+	//		}
+	//		System.out.println("Before the numbers are entered: ");
+	//		listPuzzle(tempSDK);
+	//
+	//		tempSDK = fillInNumbers(numArray, tempSDK);
+	//
+	//		System.out.println("After the numbers are entered: ");
+	//		listPuzzle(tempSDK);
+	
+			if (!fail) {
+				boolean passed = false;
+				int tempSDK[][] = new int[size][size];
+				int[] numArray = createNumbers(zeroCounter);
+				do {
+					numArray = incrementNumbers(numArray);
+					tempSDK = clonePuzzle(sdk);
+					tempSDK = fillInNumbers(numArray, tempSDK);
+					passed = checkPuzzle(tempSDK);
+				} while (!passed && numArray[0] <= size);
+				if (passed) {
+					listPuzzle(tempSDK);
+					System.out.println("------------");
+					listNumbers(numArray);
+					System.out.println("------------");
+				} // end if
+				if (!passed) {
+					System.out.println("No Solution");
+				} // end if
+			}
 		tim.stop();
 		System.out.println("Total Runtime: " + tim.getDuration() + " milliseconds");
 	}// end main
