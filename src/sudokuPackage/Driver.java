@@ -7,7 +7,7 @@ package sudokuPackage;
  *  Authors:	Christopher Porch <porchc0@students.rowan.edu>
  *  			Dan Boehmke <boehmked2@students.rowan.edu>
  *  			Brian Grillo <grillo88@students.rowan.edu>
- *  version: 2015.9.21
+ *  version: 2015.9.22
  */
 
 import java.io.BufferedReader;
@@ -95,10 +95,11 @@ public class Driver {
 		int tempSDK[][] = new int[size][size];
 		int[] numArray = createNumbers(zeroCounter);
 		do {
+			numArray = incrementNumbers(numArray);
 			tempSDK = clonePuzzle(sdk);
 			tempSDK = fillInNumbers(numArray, tempSDK);
 			passed = checkPuzzle(tempSDK);
-			numArray = incrementNumbers(numArray);
+			
 		} while (!passed && numArray[0] <= size);
 
 		if (passed) {
@@ -138,6 +139,7 @@ public class Driver {
 		for (int i = 0; i < size; i++) {
 			tempNums[i] = 1;
 		} // end for
+		tempNums[size - 1] = 0;
 		return tempNums;
 	}// end createNumbers
 
